@@ -8,14 +8,18 @@
     $telefone = $_POST['phone']; 
     $date = $_POST['date'];
     $cpf = $_POST['cpf'];
-    $endereco = $_POST['endereco']; 
+    $cep = $_POST['cep']; 
+    $rua = $_POST['rua']; 
+    $bairro = $_POST['bairro']; 
+    $cidade = $_POST['cidade']; 
     $estado = $_POST['estado'];
+
     $senha =  sha1(md5($_POST['passW']));
    
 
-    // $cmdSql = "INSERT INTO cadastropa (`nome`, `email`, `cpf`, `data_nasc`, `telefone`, `endereco`, `estado`, `senha`,`data_cadastro`) VALUES ('$nome', '$email', '$cpf', '$date', '$telefone', '$endereco', '$estado', sha1(md5('$senha')),NOW())";
+    // $cmdSql = "INSERT INTO cadastropa (`nome`, `email`, `cpf`, `data_nasc`, `telefone`, `cep`, `estado`, `senha`,`data_cadastro`) VALUES ('$nome', '$email', '$cpf', '$date', '$telefone', '$cep', '$estado', sha1(md5('$senha')),NOW())";
 
-    $cmdSql = "INSERT INTO cadastropa VALUES (0,:nome, :email, :cpf, :datanasc, :telefone, :endereco, :estado, :senha, NOW())";
+    $cmdSql = "INSERT INTO cadastropa VALUES (0,:nome, :email, :cpf, :datanasc, :telefone, :cep, :rua, :bairro, :cidade :estado, :senha, NOW())";
     $dados = [
 
       ':nome' => $nome,
@@ -23,14 +27,16 @@
       ':telefone' => $telefone,
       ':datanasc' => $date,
       ':cpf' => $cpf,
-      ':endereco' => $endereco,
+      ':cep' => $cep,
+      ':rua' => $rua,
+      ':bairro' => $bairro,
+      ':cidade' => $cidade,
       ':estado' => $estado,
       ':senha' => $senha
   
     ];
       
     $cxPronta = $cx->prepare($cmdSql);
-    var_dump($cxPronta);
     $cxPronta->execute($dados);
 
     
@@ -188,7 +194,7 @@
             </div>
   
             <div class="col-md-4 form-group mt-3">
-              <input type="text" name="endereco" class="form-control" id="endereço" placeholder="Seu endereço" data-rule="minlen:1" data-msg="Informe seu endereço corretamente">
+              <input type="text" name="cep" class="form-control" id="cep" placeholder="CEP" size="10" maxlength="9"  onblur="pesquisacep(this.value);" data-msg="Informe seu cep corretamente">
               <div class="validate"></div>
             </div>
 
@@ -227,14 +233,29 @@
               </div>
 
               <div class="col-md-4 form-group mt-3">
+                <input type="text" name="rua" class="form-control" id="rua" placeholder="Rua"  size="60" data-msg="Informe sua rua">
+                <div class="validate"></div>
+              </div>
+
+              <div class="col-md-4 form-group mt-3">
+                <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Bairro" size="40" data-msg="Informe seu bairro">
+                <div class="validate"></div>
+              </div>
+
+              <div class="col-md-4 form-group mt-3">
+                <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Cidade" size="40" data-msg="Informe sua cidade">
+                <div class="validate"></div>
+              </div>
+
+              <div class="col-md-4 form-group mt-3">
                 <input type="password" name="passW" class="form-control" id="senha" placeholder="Sua senha" data-rule="minlen:1" data-msg="Informa uma senha">
                 <div class="validate"></div>
               </div>
 
-              <!-- <div class="col-md-4 form-group mt-3">
-                <input type="password" name="confirmSenha" class="form-control" id="senha" placeholder="Confirme sua senha" data-rule="minlen:1" data-msg="Informa uma senha">
+              <div class="col-md-4 form-group mt-3">
+                <input type="password" name="confirmSenha" class="form-control" id="confirm_password" placeholder="Confirme sua senha" data-rule="minlen:1" data-msg="Informa uma senha">
                 <div class="validate"></div>
-              </div> -->
+              </div>
             
           <!--<div class="form-group mt-3">
             <textarea class="form-control" name="message" rows="6" placeholder="Mensagem(Opcional)"></textarea>
@@ -401,6 +422,9 @@
   <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/validade.js"></script>
+  <script src="../assets/js/cepAPI.js"></script>
+  
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
