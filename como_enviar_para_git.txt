@@ -1,0 +1,21 @@
+-- Criando novo projeto
+git init
+git add .
+
+git config --global user.email ""
+git config --global user.name ""
+  
+git commit -m "first commit"
+
+git branch -M master
+
+git remote add origin https://github.com/GuiCeara/MedFront.git
+
+git push -u origin master
+-- Clonar projeto
+git clone nome_repositório (https://github.com/GuiCeara/MedFront.git)
+
+-- Atulaizando projeto existente
+git add .
+git commit -m "Salvando texto de explicação "
+git push
