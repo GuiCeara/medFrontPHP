@@ -1,61 +1,61 @@
 <?php
-  require_once '../config/config.php';
+//   require_once '../config/config.php';
   
-  if(isset($_POST['btnCadastrar'])){
+//   if(isset($_POST['btnCadastrar'])){
 
-    $nome = $_POST['name'];
-    $email = $_POST['email']; 
-    $telefone = $_POST['phone']; 
-    $date = $_POST['date'];
-    $cpf = $_POST['cpf'];
-    $cep = $_POST['cep']; 
-    $rua = $_POST['rua']; 
-    $bairro = $_POST['bairro']; 
-    $cidade = $_POST['cidade']; 
-    $estado = $_POST['estado'];
+//     $nome = $_POST['name'];
+//     $email = $_POST['email']; 
+//     $telefone = $_POST['phone']; 
+//     $date = $_POST['date'];
+//     $cpf = $_POST['cpf'];
+//     $cep = $_POST['cep']; 
+//     $rua = $_POST['rua']; 
+//     $bairro = $_POST['bairro']; 
+//     $cidade = $_POST['cidade']; 
+//     $estado = $_POST['estado'];
 
-    $senha =  sha1(md5($_POST['passW']));
+//     $senha =  sha1(md5($_POST['passW']));
    
 
-    // $cmdSql = "INSERT INTO cadastropa (`nome`, `email`, `cpf`, `data_nasc`, `telefone`, `cep`, `estado`, `senha`,`data_cadastro`) VALUES ('$nome', '$email', '$cpf', '$date', '$telefone', '$cep', '$estado', sha1(md5('$senha')),NOW())";
+//     // $cmdSql = "INSERT INTO cadastropa (`nome`, `email`, `cpf`, `data_nasc`, `telefone`, `cep`, `estado`, `senha`,`data_cadastro`) VALUES ('$nome', '$email', '$cpf', '$date', '$telefone', '$cep', '$estado', sha1(md5('$senha')),NOW())";
 
-    $cmdSql = "INSERT INTO cadastropa VALUES (0,:nome, :email, :cpf, :datanasc, :telefone, :cep, :rua, :bairro, :cidade :estado, :senha, NOW())";
-    $dados = [
+//     $cmdSql = "INSERT INTO cadastropa VALUES (0,:nome, :email, :cpf, :datanasc, :telefone, :cep, :rua, :bairro, :cidade :estado, :senha, NOW())";
+//     $dados = [
 
-      ':nome' => $nome,
-      ':email' => $email,
-      ':telefone' => $telefone,
-      ':datanasc' => $date,
-      ':cpf' => $cpf,
-      ':cep' => $cep,
-      ':rua' => $rua,
-      ':bairro' => $bairro,
-      ':cidade' => $cidade,
-      ':estado' => $estado,
-      ':senha' => $senha
+//       ':nome' => $nome,
+//       ':email' => $email,
+//       ':telefone' => $telefone,
+//       ':datanasc' => $date,
+//       ':cpf' => $cpf,
+//       ':cep' => $cep,
+//       ':rua' => $rua,
+//       ':bairro' => $bairro,
+//       ':cidade' => $cidade,
+//       ':estado' => $estado,
+//       ':senha' => $senha
   
-    ];
+//     ];
       
-    $cxPronta = $cx->prepare($cmdSql);
-    $cxPronta->execute($dados);
+//     $cxPronta = $cx->prepare($cmdSql);
+//     $cxPronta->execute($dados);
 
     
     
 
-    // if($cxPronta->execute){
-    //   echo'<div class="alert alert-success" role="alert">
-    //       <h4 class="alert-heading">Cadastro</h4>
-    //       <p>Sucesso ao cadastrar usuário!!!</p>
-    //   </div>';
-    // }
-    // else{
-    //   echo'<div class="alert alert-danger" role="alert">
-    //       <h4 class="alert-heading">Cadastro</h4>
-    //       <p>Erro ao cadastrar usuário</p>
-    //   </div>';
-    // }
+//     // if($cxPronta->execute){
+//     //   echo'<div class="alert alert-success" role="alert">
+//     //       <h4 class="alert-heading">Cadastro</h4>
+//     //       <p>Sucesso ao cadastrar usuário!!!</p>
+//     //   </div>';
+//     // }
+//     // else{
+//     //   echo'<div class="alert alert-danger" role="alert">
+//     //       <h4 class="alert-heading">Cadastro</h4>
+//     //       <p>Erro ao cadastrar usuário</p>
+//     //   </div>';
+//     // }
 
-  }
+//   }
 
 ?>
 
@@ -164,8 +164,10 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Cadastro Paciente</h2>
+          <h2>Cadastro Paciente</h2><br>
+          <h5>Informação Pessoal</h4>
         </div>
+
 
         <form method="POST" class="php-email-form">
           <div class="row">
@@ -189,73 +191,9 @@
             </div>
 
             <div class="col-md-4 form-group mt-3">
-              <input type="text" name="cpf" class="form-control" id="name" placeholder="CPF" \pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" \title="Digite um CPF no formato: xxx.xxx.xxx-xx" data-rule="minlen:11" data-msg="Insira pelo menos 11 caracteres">
+              <input type="text" name="cpf" class="form-control cpfpicker" id="name" placeholder="CPF" \pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" \title="Digite um CPF no formato: xxx.xxx.xxx-xx" data-rule="minlen:11" data-msg="Insira pelo menos 11 caracteres">
               <div class="validate"></div>
             </div>
-  
-            <div class="col-md-4 form-group mt-3">
-              <input type="text" name="cep" class="form-control" id="cep" placeholder="CEP" size="10" maxlength="9"  onblur="pesquisacep(this.value);" data-msg="Informe seu cep corretamente">
-              <div class="validate"></div>
-            </div>
-
-            <div class="col-md-4 form-group mt-3">
-                <select name="estado" id="estado"  class="form-select">
-                  <option value="">Seu estado</option>
-                  <option>Acre (AC)</option>
-                  <option>Alagoas (AL)</option>
-                  <option>Amapá (AP)</option>
-                  <option>Amazonas (AM)></option>
-                  <option>Bahia (BA)</option>
-                  <option>Ceará (CE)</option>
-                  <option>Distrito Federal (DF)</option>
-                  <option>Espírito Santo (ES)</option>
-                  <option>Goiás (GO)</option>
-                  <option>Maranhão (MA)</option>
-                  <option>Mato Grosso (MT)</option>
-                  <option>Mato Grosso do Sul (MS)</option>
-                  <option>Minas Gerais (MG)></option>
-                  <option>Pará (PA)</option>
-                  <option>Paraíba (PB)</option>
-                  <option>Paraná (PR)</option>
-                  <option>Pernambuco (PE)</option>
-                  <option>Piauí (PI)</option>
-                  <option>Rio de Janeiro (RJ)</option>
-                  <option>io Grande do Norte (RN)</option>
-                  <option>Rio Grande do Sul (RS)</option>
-                  <option>Rondônia (RO)</option>
-                  <option>Roraima (RR)</option>
-                  <option>Santa Catarina (SC)</option>
-                  <option>São Paulo (SP)</option>
-                  <option>Sergipe (SE)</option>
-                  <option>Tocantins (TO)</option>
-                </select>
-                <div class="validate"></div>
-              </div>
-
-              <div class="col-md-4 form-group mt-3">
-                <input type="text" name="rua" class="form-control" id="rua" placeholder="Rua"  size="60" data-msg="Informe sua rua">
-                <div class="validate"></div>
-              </div>
-
-              <div class="col-md-4 form-group mt-3">
-                <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Bairro" size="40" data-msg="Informe seu bairro">
-                <div class="validate"></div>
-              </div>
-
-              <div class="col-md-4 form-group mt-3">
-                <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Cidade" size="40" data-msg="Informe sua cidade">
-                <div class="validate"></div>
-              </div>
-
-              <div class="col-md-4 form-group mt-3">
-                <input type="password" name="passW" class="form-control" id="senha" placeholder="Sua senha" data-rule="minlen:1" data-msg="Informa uma senha">
-                <div class="validate"></div>
-              </div>
-
-              <div class="col-md-4 form-group mt-3">
-                <input type="password" name="confirmSenha" class="form-control" id="confirm_password" placeholder="Confirme sua senha" data-rule="minlen:1" data-msg="Informa uma senha">
-                <div class="validate"></div>
-              </div>
             
           <!--<div class="form-group mt-3">
             <textarea class="form-control" name="message" rows="6" placeholder="Mensagem(Opcional)"></textarea>
@@ -266,7 +204,8 @@
             <div class="error-message"></div>
             <div class="sent-message">Seu cadastro foi concluído com</div>
           </div> -->
-          <button type="submit" name="btnCadastrar">Cadastrar-se</button>
+
+          <button type="submit" class="btnCadastrar" name="btnCadastrar">Cadastrar-se</button>
         </form>
 
       </div>

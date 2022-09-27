@@ -101,7 +101,6 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
   opacity: 1;
 }
-
 .datepicker-dropdown {
   padding: 20px !important;
 }
@@ -423,10 +422,10 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   color: #2c4964;
 }
-#hero h2 {
+.sub-tittle{
   color: #2c4964;
   margin: 10px 0 0 0;
-  font-size: 24px;
+  font-size: 20px;
 }
 #hero .btn-get-started {
   font-family: "Raleway", sans-serif;
@@ -498,6 +497,12 @@ section {
   position: relative;
   color: #2c4964;
 }
+.section-title h5 {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  color: #2c4964;
+}
 .section-title h2::before {
   content: "";
   position: absolute;
@@ -520,6 +525,11 @@ section {
 }
 .section-title p {
   margin-bottom: 0;
+}
+.btnCadastrar{
+  margin: 0 auto;
+  width: 500px;
+  margin-top: 25px;
 }
 
 /*--------------------------------------------------------------
