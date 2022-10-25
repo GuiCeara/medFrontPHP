@@ -120,21 +120,21 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">MedFront</a></h1>
+      <h1 class="logo me-auto"><a href="../index.html">MedFront</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="../index.html">Home</a></li>
           <li><a class="nav-link scrollto" href="index.html#about">Sobre</a></li>
           <!--<li><a class="nav-link scrollto" href="#services">Serviços</a></li>-->
           <li><a class="nav-link scrollto" href="#duvidas">Duvidas</a></li>
           <li class="dropdown"><a><span>Cadastrar</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#appointment">Cadastro Paciente</a></li>
-              <li><a href="cadastroMed.html#appointment">Cadastro Médico</a></li>
-              <li><a href="cadastroCli.html#appointment">Cadastro Clínica</a></li>
+              <li><a href="../cadastroMed.html#appointment">Cadastro Médico</a></li>
+              <li><a href="../cadastroCli.html#appointment">Cadastro Clínica</a></li>
             </ul>
           </li>
         </ul>
@@ -170,31 +170,31 @@
         <form method="POST" class="php-email-form">
           <div class="row">
             <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Seu nome" data-rule="minlen:4" data-msg="Insira pelo menos 4 caracteres">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Seu nome" data-rule="minlen:4" data-msg="Insira pelo menos 4 caracteres" required>
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Seu email" data-rule="email" data-msg="Por favor digite um email válido">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Seu email" data-rule="email" data-msg="Por favor digite um email válido" required>
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Seu telefone" data-rule="minlen:4" data-msg="Insira pelo menos 4 caracteres">
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Seu telefone" data-rule="minlen:4" data-msg="Insira pelo menos 4 caracteres" required>
               <div class="validate"></div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4 form-group mt-3">
-              <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Data de nascimento" data-rule="minlen:8" data-msg="Insira pelo menos 8 caracteres">
+              <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Data de nascimento" data-rule="minlen:8" data-msg="Insira pelo menos 8 caracteres" required>
               <div class="validate"></div>
             </div>
 
             <div class="col-md-4 form-group mt-3">
-              <input type="text" name="cpf" class="form-control" id="name" placeholder="CPF" \pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" \title="Digite um CPF no formato: xxx.xxx.xxx-xx" data-rule="minlen:11" data-msg="Insira pelo menos 11 caracteres">
+              <input type="text" name="cpf" class="form-control" id="name" placeholder="CPF" \pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" \title="Digite um CPF no formato: xxx.xxx.xxx-xx" data-rule="minlen:11" data-msg="Insira pelo menos 11 caracteres" required>
               <div class="validate"></div>
             </div>
   
             <div class="col-md-4 form-group mt-3">
-              <input type="text" name="cep" class="form-control" id="cep" placeholder="CEP" size="10" maxlength="9"  onblur="pesquisacep(this.value);" data-msg="Informe seu cep corretamente">
+              <input type="text" name="cep" class="form-control" id="cep" placeholder="CEP" size="10" maxlength="9"  onblur="pesquisacep(this.value);" data-msg="Informe seu cep corretamente" required>
               <div class="validate"></div>
             </div>
 
